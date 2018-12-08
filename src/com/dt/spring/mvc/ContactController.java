@@ -1,5 +1,12 @@
 package com.dt.spring.mvc;
 
+/*
+ * Author ----->  Durgesh Tiwari ----> ( 15-Dec-2016)
+ *  
+ * Controller class
+ * 
+ */
+
 import java.util.List;
 import java.util.Map;
 
@@ -14,9 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dt.spring.service.ContactService;
 import com.dt.spring.to.ContactTo;
 
-
-
 @RestController
+
+/*
+ * Spring 4.0 introduced @RestController A specialized version of the controller
+ * which is a convenience annotation that does nothing more than add
+ * the @Controller and @ResponseBody annotations. By annotating the controller
+ * class with @RestController annotation, you no longer need to
+ * add @ResponseBody to all the request mapping methods. The @ResponseBody
+ * annotation is active by default.
+ 
+ * @ResponseBody annotation on a method, Spring converts the return value and
+ * writes it to the http response automatically. Each method in the Controller
+ * class must be annotated with @ResponseBody.
+ */
+
 public class ContactController {
 
 	@Autowired
@@ -37,8 +56,7 @@ public class ContactController {
 		// Spring MVC supply this object to a Controller method by using the
 		// @ModelAttribute annotation:
 		System.out.println("addContact");
-		 ContactTo cto = new ContactTo(ct.getCid(),ct.getCname(), ct.getCemail(),
-		 ct.getCphone());
+		ContactTo cto = new ContactTo(ct.getCid(), ct.getCname(), ct.getCemail(), ct.getCphone());
 //		ContactTo cto = new ContactTo();
 
 		boolean added = cs.addContact(cto);
